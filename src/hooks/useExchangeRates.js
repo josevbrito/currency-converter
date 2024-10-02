@@ -9,7 +9,8 @@ const useExchangeRates = (baseCurrency) => {
   useEffect(() => {
     const fetchRates = async () => {
       try {
-        const response = await axios.get(`https://v6.exchangerate-api.com/v6/a0685146d0f732c88545808f/latest/${baseCurrency}`);
+        const apiKey = process.env.REACT_APP_API_KEY; // Access the API key from .env
+        const response = await axios.get(`https://v6.exchangerate-api.com/v6/${apiKey}/latest/${baseCurrency}`);
         setRates(response.data.conversion_rates);
       } catch (err) {
         setError(err.message);
