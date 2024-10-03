@@ -16,14 +16,15 @@ const App = () => {
     setDarkMode(savedTheme);
   }, []);
 
-  // save theme preference saved in local storage
+  // apply dark mode or light mode class to the body directly
   useEffect(() => {
     localStorage.setItem('darkMode', darkMode);
+    document.body.className = darkMode ? 'dark-mode' : 'light-mode';
   }, [darkMode]);
 
   return (
-    <div className={`App ${darkMode ? 'dark-mode' : 'light-mode'}`}>
-      <CurrencyConverter/>
+    <div className="App">
+      <CurrencyConverter />
       <button className='theme-toggle' onClick={toggleTheme}>
         Switch to {darkMode ? 'Light Mode' : 'Dark Mode'}
       </button>
